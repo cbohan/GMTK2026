@@ -4,8 +4,7 @@ using UnityEngine.InputSystem;
 
 public class PlayerCamera : MonoBehaviour
 {
-    [SerializeField] private Transform _yawTransform;
-    [SerializeField] private Transform _pitchTransform;
+    [SerializeField] private Transform _Transform;
     [SerializeField] private InputActionReference _lookAction;
     [SerializeField] private float _sensitivity = .1f;
     
@@ -24,8 +23,7 @@ public class PlayerCamera : MonoBehaviour
         
         _pitch = Mathf.Clamp(_pitch, -90f, 90f);
 
-        _yawTransform.localRotation = Quaternion.Euler(0f, _yaw, 0f);
-        _pitchTransform.localRotation = Quaternion.Euler(_pitch, 0f, 0f);
+        _Transform.localRotation = Quaternion.Euler(_pitch, _yaw, 0f);
     }
 
     private void OnEnable()

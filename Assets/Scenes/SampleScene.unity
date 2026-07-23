@@ -557,15 +557,15 @@ RectTransform:
   m_GameObject: {fileID: 352422869}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
   m_LocalPosition: {x: 0, y: 0, z: 1}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
+  m_LocalScale: {x: 0.86, y: 0.86, z: 0.86}
+  m_ConstrainProportionsScale: 1
   m_Children: []
   m_Father: {fileID: 1278916985}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0, y: 0}
   m_AnchorMax: {x: 0, y: 0}
-  m_AnchoredPosition: {x: 408, y: 386}
-  m_SizeDelta: {x: 736, y: 736}
+  m_AnchoredPosition: {x: 408, y: 387}
+  m_SizeDelta: {x: 600, y: 900}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &352422871
 MonoBehaviour:
@@ -1192,6 +1192,7 @@ GameObject:
   - component: {fileID: 1195087150}
   - component: {fileID: 1195087149}
   - component: {fileID: 1195087148}
+  - component: {fileID: 1195087151}
   m_Layer: 0
   m_Name: Phone Camera
   m_TagString: MainCamera
@@ -1284,7 +1285,7 @@ Camera:
   m_ShutterSpeed: 0.005
   m_Aperture: 16
   m_FocusDistance: 10
-  m_FocalLength: 50
+  m_FocalLength: 28.970562
   m_BladeCount: 5
   m_Curvature: {x: 2, y: 11}
   m_BarrelClipping: 0.25
@@ -1293,9 +1294,9 @@ Camera:
   m_LensShift: {x: 0, y: 0}
   m_NormalizedViewPortRect:
     serializedVersion: 2
-    x: 0.2
+    x: 0
     y: 0
-    width: 0.6
+    width: 1
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
@@ -1317,6 +1318,22 @@ Camera:
   m_OcclusionCulling: 1
   m_StereoConvergence: 10
   m_StereoSeparation: 0.022
+--- !u!114 &1195087151
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1195087146}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 837917dac6c741942a7e1df0e64a6ed7, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::CameraSnap
+  targetCamera: {fileID: 1195087150}
+  imageWidth: 600
+  imageHeight: 900
+  fileName: captured_image.png
 --- !u!1 &1278916981
 GameObject:
   m_ObjectHideFlags: 0
@@ -1699,7 +1716,9 @@ MonoBehaviour:
   - {fileID: 1043621124}
   _frames: {x: 3, y: 1}
   _runFrames: 000000000100000002000000
+  _secondPerRunFrame: 0.25
   _waitFrames: 00000000
+  _secondPerWaitFrame: 0.5
 --- !u!4 &1707103859
 Transform:
   m_ObjectHideFlags: 0

@@ -17,12 +17,14 @@ public class AnimalMover : MonoBehaviour
 
     private Material _material;
     private bool _hasBeenTriggered;
+    private LayerMask layerMask;
 
     private void Awake()
     {
         _material = GetComponent<MeshRenderer>().material;
         _material.SetVector(TilingHash, new Vector4(_frames.x, _frames.y, 0, 0));
         _material.SetVector(OffsetHash, new Vector4(0, 0, 0, 0));
+        layerMask = LayerMask.GetMask("Terrain");
     }
 
     private void Start()
@@ -42,7 +44,7 @@ public class AnimalMover : MonoBehaviour
             while (!reachedTarget)
             {
                 var targetPosition = Vector3.MoveTowards(transform.position, move.Position, move.MoveSpeed * Time.deltaTime);
-                if (Physics.Raycast(targetPosition + Vector3.up * 10f, Vector3.down, out var hit))
+                if (Physics.Raycast(targetPosition + Vector3.up * 10f, Vector3.down, out var hit, Mathf.Infinity, layerMask))
                 {
                     targetPosition = hit.point;
                 }

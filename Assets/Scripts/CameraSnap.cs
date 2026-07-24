@@ -9,37 +9,58 @@ public class CameraSnap : MonoBehaviour
     [SerializeField] private int imageWidth = 1920;
     [SerializeField] private int imageHeight = 1080;
     [SerializeField] private string fileName = "captured_image.png";
+    private LayerMask obstacleLayerMask;
+    private LayerMask jimothyLayerMask;
+    void Awake()
+    {
+        // Grab the integer values for the layer masks of Jimothy and everything else in the game
+        obstacleLayerMask = LayerMask.GetMask("Obstacle", "Terrain");
+        jimothyLayerMask = LayerMask.GetMask("Jimothy");
+    }
     public void Update()
     {
         Mouse mouse = Mouse.current;
         if (mouse.leftButton.wasPressedThisFrame)
         {
-            // 1. Create a temporary RenderTexture
-            //RenderTexture renderTexture = new RenderTexture(imageWidth, imageHeight, 24);
-            //targetCamera.targetTexture = renderTexture;
-
-            // 2. Render the camera view manually
+            // Force a render of the phone camera source and set the RenderTexture to the texture used in the phone, which is needed for ReadPixels to know what to sample from
             targetCamera.Render();
-
-            // 3. Read pixels from the RenderTexture into a Texture2D
             RenderTexture.active = targetCamera.targetTexture;
+
+            // Create an image texture and capture what the phone camera sees
             Texture2D image = new Texture2D(imageWidth, imageHeight, TextureFormat.RGB24, false);
-            Debug.Log($"Capturing image with width {imageWidth} and height {imageHeight}");
             image.ReadPixels(new Rect(0, 0, imageWidth, imageHeight), 0, 0);
             image.Apply();
 
-            // 4. Reset camera and active render texture settings
-            //targetCamera.targetTexture = null;
+            // Set the RenderTexture back to null, otherwise the screen will just show the phone camera view
             RenderTexture.active = null;
 
-            // 5. Encode texture to PNG data
+            // Create a PNG image of the image texture and save it off to local cache
             byte[] bytes = image.EncodeToPNG();
-
-            // 6. Save data to the device path
             string path = Path.Combine(Application.persistentDataPath, fileName);
             File.WriteAllBytes(path, bytes);
-
             Debug.Log($"Image successfully saved to: {path}");
+
+            // Send out an array of Raycasts from the position of the camera and calculate how much of the image was Jimothy by percentage
+            RaycastHit hit;
+            for (float x = -0.5f; x < 0.5f; x+=0.1f)
+            {
+                for (float y = -0.8f; y < 0.8f; y+=0.1f)
+                {
+                    Vector3 testDirection = new Vector3(x,y,(2.0f - Mathf.Abs(x)));
+                    if (Physics.Raycast(transform.position, transform.TransformDirection(testDirection), out hit, Mathf.Infinity, jimothyLayerMask))
+                    {
+                        Debug.DrawRay(transform.position, transform.TransformDirection(testDirection) * hit.distance, Color.yellow, 20.0f); 
+                        Debug.Log("Found Jimothy"); 
+                    }
+                    else if (Physics.Raycast(transform.position, transform.TransformDirection(testDirection), out hit, Mathf.Infinity, obstacleLayerMask))
+                    { 
+                        Debug.DrawRay(transform.position, transform.TransformDirection(testDirection) * hit.distance, Color.white, 20.0f); 
+                        Debug.Log("Missed Jimothy"); 
+                    }
+                }
+            }
+
+
         }
     }
 }

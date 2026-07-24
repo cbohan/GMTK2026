@@ -13,6 +13,7 @@ GameObject:
   - component: {fileID: 8799731957199087974}
   - component: {fileID: 5025611882913992271}
   - component: {fileID: 5303619577319867022}
+  - component: {fileID: 8732806006204268538}
   m_Layer: 6
   m_Name: Tree
   m_TagString: Untagged
@@ -134,3 +135,15 @@ SphereCollider:
   serializedVersion: 3
   m_Radius: 0.61
   m_Center: {x: 0, y: 1.17, z: 0.000000029802322}
+--- !u!114 &8732806006204268538
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 870396499637361354}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0f31824905f77f748a8a7c080be9b3d3, type: 3}
+  m_Name:
+  m_EditorClassIdentifier: Assembly-CSharp::MeshBoundsSetter

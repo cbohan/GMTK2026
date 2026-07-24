@@ -6,6 +6,7 @@ public class AnimalMover : MonoBehaviour
 {
     private static readonly int TilingHash = Shader.PropertyToID("_Tiling");
     private static readonly int OffsetHash = Shader.PropertyToID("_Offset");
+    private static readonly int FlipXHash = Shader.PropertyToID("_FlipX");
     
     [SerializeField] private TiggerVolume _triggerVolume;
     [SerializeField] private AnimalMove[] _moves;
@@ -54,6 +55,7 @@ public class AnimalMover : MonoBehaviour
                 runFrameTimer += Time.deltaTime;
                 var runFrame = Mathf.FloorToInt(runFrameTimer / _secondPerRunFrame) % _runFrames.Length;
                 _material.SetVector(OffsetHash, GetOffset(_runFrames[runFrame]));
+                _material.SetFloat(FlipXHash, IsMovingRight(transform.position, move.Position) ? 0f : 1f);
                 
                 yield return MoveTowardsNearbyTrash();
             }
@@ -101,6 +103,7 @@ public class AnimalMover : MonoBehaviour
             runFrameTimer += Time.deltaTime;
             var runFrame = Mathf.FloorToInt(runFrameTimer / _secondPerRunFrame) % _runFrames.Length;
             _material.SetVector(OffsetHash, GetOffset(_runFrames[runFrame]));
+            _material.SetFloat(FlipXHash, IsMovingRight(transform.position, nearestTrash.Position) ? 0f : 1f);
                 
             yield return null;
         }
@@ -109,6 +112,13 @@ public class AnimalMover : MonoBehaviour
         yield return nearestTrash.Eat();
         
         yield return null;
+    }
+
+    private bool IsMovingRight(Vector3 start, Vector3 end)
+    {
+        var startScreenPoint = Camera.main.WorldToScreenPoint(start);
+        var endScreenPoint = Camera.main.WorldToScreenPoint(end);
+        return startScreenPoint.x < endScreenPoint.x;
     }
 
     private Vector4 GetOffset(int frame)

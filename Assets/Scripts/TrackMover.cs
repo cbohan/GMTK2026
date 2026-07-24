@@ -9,6 +9,8 @@ public class TrackMover : MonoBehaviour
     [SerializeField] private Transform _player;
     [SerializeField] private float _speed = 2f;
     [SerializeField] private float _heightAboveTrack = 1f;
+    [SerializeField] private float _stepHeight = .25f;
+    [SerializeField] private float _stepFrequency = 1f;
 
     private float _distance;
     private float _normalizedDistance;
@@ -25,7 +27,7 @@ public class TrackMover : MonoBehaviour
         {
             TrackPosition = hit.point;
         }
-        TrackPosition += Vector3.up * _heightAboveTrack;
+        TrackPosition += Vector3.up * (_heightAboveTrack + _stepHeight * Mathf.Abs(Mathf.Sin(_stepFrequency * Time.time))) ;
         _player.position = TrackPosition;
     }
 }

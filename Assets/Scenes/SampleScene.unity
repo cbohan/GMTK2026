@@ -1548,6 +1548,8 @@ MonoBehaviour:
   _player: {fileID: 1844104727}
   _speed: 2
   _heightAboveTrack: 1.5
+  _stepHeight: 0.075
+  _stepFrequency: 4.5
 --- !u!4 &1285676934
 Transform:
   m_ObjectHideFlags: 0

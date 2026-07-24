@@ -1,5 +1,5 @@
-using System;
 using System.Collections;
+using System.Linq;
 using UnityEngine;
 
 public class AnimalMover : MonoBehaviour
@@ -38,7 +38,6 @@ public class AnimalMover : MonoBehaviour
         foreach (var move in _moves)
         {
             var reachedTarget = false;
-
             var runFrameTimer = 0f;
             while (!reachedTarget)
             {
@@ -54,7 +53,7 @@ public class AnimalMover : MonoBehaviour
                 var runFrame = Mathf.FloorToInt(runFrameTimer / _secondPerRunFrame) % _runFrames.Length;
                 _material.SetVector(OffsetHash, GetOffset(_runFrames[runFrame]));
                 
-                yield return null;
+                yield return MoveTowardsNearbyTrash();
             }
 
 
@@ -64,13 +63,52 @@ public class AnimalMover : MonoBehaviour
                 waitTimer += Time.deltaTime;
                 var waitFrame = Mathf.FloorToInt(waitTimer / _secondPerWaitFrame) % _waitFrames.Length;
                 _material.SetVector(OffsetHash, GetOffset(_waitFrames[waitFrame]));
-                yield return null;
+                
+                yield return MoveTowardsNearbyTrash();
             }
         }
 
         yield return null;
     }
-    
+
+    private IEnumerator MoveTowardsNearbyTrash()
+    {
+        if (Trash.Trashes == null || Trash.Trashes.Count == 0) yield break;
+        
+        var nearestTrash = Trash.Trashes.OrderBy(trash => Vector3.Distance(trash.transform.position, transform.position)).First();
+        var distanceToNearestTrash = Vector3.Distance(transform.position, nearestTrash.transform.position);
+        var runToTrashDistance = 5f;
+        
+        if (distanceToNearestTrash > runToTrashDistance) yield break;
+        
+        var reachedTarget = false;
+        var runFrameTimer = 0f;
+        while (!reachedTarget)
+        {
+            var targetPosition = Vector3.MoveTowards(
+                transform.position, 
+                nearestTrash.Position, 
+                3f * Time.deltaTime);
+            if (Physics.Raycast(targetPosition + Vector3.up * 10f, Vector3.down, out var hit))
+            {
+                targetPosition = hit.point;
+            }
+            transform.position = targetPosition;
+            reachedTarget = Vector3.Distance(transform.position, nearestTrash.Position) < .5f;
+                
+            runFrameTimer += Time.deltaTime;
+            var runFrame = Mathf.FloorToInt(runFrameTimer / _secondPerRunFrame) % _runFrames.Length;
+            _material.SetVector(OffsetHash, GetOffset(_runFrames[runFrame]));
+                
+            yield return null;
+        }
+        
+        // Eat the trash
+        yield return nearestTrash.Eat();
+        
+        yield return null;
+    }
+
     private Vector4 GetOffset(int frame)
     {
         return new Vector4(frame % _frames.x, frame / _frames.x, 0, 0);

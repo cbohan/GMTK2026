@@ -1,3 +1,4 @@
+using System;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -7,7 +8,12 @@ public class TrashThrower : MonoBehaviour
     [SerializeField] private InputActionReference _throwAction;
     [SerializeField] private Camera _camera;
     [SerializeField] private Trash _trashPrefab;
-    
+
+    private void Awake()
+    {
+        Trash.Trashes.Clear();
+    }
+
     private void OnEnable()
     {
         _throwAction.action.Enable();

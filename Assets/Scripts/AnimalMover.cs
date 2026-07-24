@@ -93,7 +93,7 @@ public class AnimalMover : MonoBehaviour
                 transform.position, 
                 nearestTrash.Position, 
                 3f * Time.deltaTime);
-            if (Physics.Raycast(targetPosition + Vector3.up * 10f, Vector3.down, out var hit))
+            if (Physics.Raycast(targetPosition + Vector3.up * 10f, Vector3.down, out var hit, Mathf.Infinity, layerMask))
             {
                 targetPosition = hit.point;
             }

@@ -25,7 +25,7 @@ public class CameraSnap : MonoBehaviour
             RenderTexture.active = targetCamera.targetTexture;
 
             // Create an image texture and capture what the phone camera sees
-            Texture2D image = new Texture2D(imageWidth, imageHeight, TextureFormat.RGB24, false);
+            Texture2D image = new Texture2D(imageWidth, imageHeight, TextureFormat.RGBA32, false);
             image.ReadPixels(new Rect(0, 0, imageWidth, imageHeight), 0, 0);
             image.Apply();
 

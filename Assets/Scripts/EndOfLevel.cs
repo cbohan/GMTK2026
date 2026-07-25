@@ -30,7 +30,7 @@ public class EndOfLevel : MonoBehaviour
         _backToMenuButton.onClick.AddListener(BackToMenu);
     }
 
-    public void Show(int bestPhotoScore)
+    public void Show(int bestPhotoScore, float startingFollowerCount, float followerCount)
     {
         _topCommentNameText.text = usernames[Random.Range(0,usernames.Length)];
         if (bestPhotoScore < 5 )

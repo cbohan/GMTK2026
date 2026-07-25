@@ -39,8 +39,9 @@ public class TrashCan : MonoBehaviour
         TrashCans.Remove(this);
     }
 
-    public static void HandleTrashInPicture(Vector3 origin, Camera camera)
+    public static bool HandleTrashInPicture(Vector3 origin, Camera camera)
     {
+        bool hitACan = false;
         TrashCan closestHitTrashCan = null;
         foreach (var trashCan in TrashCans)
         {
@@ -65,6 +66,9 @@ public class TrashCan : MonoBehaviour
         if (closestHitTrashCan)
         {
             closestHitTrashCan.OpenTrashCan();
+            hitACan = true;
         }
+
+        return hitACan;
     }
 }

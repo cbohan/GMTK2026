@@ -17,17 +17,28 @@ public class Hud : MonoBehaviour
     public int TrashAmount => _trashAmount;
     [SerializeField] private int _trashAmount;
     [SerializeField] private TMP_Text _trashText;
+
+    [Header("Followers")]
+    public float followerCount => _followerCount;
+    [SerializeField] private float _followerCount;
+    [SerializeField] private float _followerDrainPerFrame;
+    [SerializeField] private TMP_Text _followerText;
+    [SerializeField] private TMP_Text _followerEndText;
+
     private int bestPhotoScore = 0;
     private bool levelActive = true;
+    private float _startingFollowerCount;
 
     private void Awake()
     {
         instance = this;
         levelActive = true;
+        _startingFollowerCount = _followerCount;
     }
     
     private void Update()
     {
+        // Display the correct battery icon in the hud based on the percentage of the battery remaining
         var normalizedBattery = _batteryAmount / 100f;
         var batteryImageIndex = Mathf.FloorToInt(Mathf.Lerp(
             _batterySprites.Length,
@@ -37,15 +48,25 @@ public class Hud : MonoBehaviour
         _batteryImage.sprite = _batterySprites[batteryImageIndex];
         _batteryText.text = $"{Mathf.Max(0, Mathf.RoundToInt(_batteryAmount))}%";
         
+        // Display the amount of trash left to throw
         _trashText.text = $"{_trashAmount}";
+
+        _followerText.text = $"{(int)_followerCount}";
         
-        _batteryAmount -= Time.deltaTime;
-        
-        if (_batteryAmount <= 0 && levelActive)
+        // If the level is active, decrement the number of followers and the battery amount
+        if (levelActive)
         {
-            levelActive = false;
-            EndOfLevel.instance.Show(bestPhotoScore);
-            Cursor.lockState = CursorLockMode.None;
+            _batteryAmount -= Time.deltaTime;
+            _followerCount -= _followerDrainPerFrame;
+            
+            // When the battery hits zero, freeze player controls and show the end-of-level screen
+            if (_batteryAmount <= 0)
+            {
+                levelActive = false;
+                _followerEndText.text = $"{(int)_followerCount} followers";
+                EndOfLevel.instance.Show(bestPhotoScore, _startingFollowerCount, _followerCount);
+                Cursor.lockState = CursorLockMode.None;
+            }
         }
     }
 
@@ -59,8 +80,20 @@ public class Hud : MonoBehaviour
         _trashAmount += 2;
     }
 
-    public void TakePicture(int highestRayCount)
+    public void TakePicture(int hitCount, int highestRayCount, bool trashCan)
     {
+        if (trashCan)
+        {
+            
+        }
+        else if (hitCount == 0)
+        {
+            _followerCount -= 100f;
+        }
+        else
+        {
+            _followerCount += (float)hitCount * 100f;
+        }
         bestPhotoScore = highestRayCount;
         _batteryAmount -= 5f;
     }

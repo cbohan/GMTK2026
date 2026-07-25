@@ -14,10 +14,13 @@ public class CameraSnap : MonoBehaviour
     private LayerMask layerMask;
     private int highestRayCount = 0;
     private bool photoTaken = false;
+    private AudioSource _snapAudio;
+    
     void Awake()
     {
         // Grab the integer values for the layer masks of Jimothy and everything else in the game
         layerMask = LayerMask.GetMask("Jimothy", "Obstacle", "Terrain");
+        _snapAudio = GetComponent<AudioSource>();
     }
     public void Update()
     {
@@ -78,6 +81,7 @@ public class CameraSnap : MonoBehaviour
 
             bool canWasHit = TrashCan.HandleTrashInPicture(transform.position, targetCamera);
             Hud.instance.TakePicture(hitCount, highestRayCount, canWasHit);
+            _snapAudio.Play();
         }
     }
 }

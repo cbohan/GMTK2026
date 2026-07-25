@@ -2574,7 +2574,7 @@ MonoBehaviour:
   imageWidth: 600
   imageHeight: 900
   fileName: captured_image.png
-  bestPhoto: {fileID: 0}
+  bestPhoto: {fileID: 1845974679}
 --- !u!1001 &1216914320
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -2739,9 +2739,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::EndOfLevel
   IsShown: 0
   _followersText: {fileID: 105684761}
-  _topCommentNameText: {fileID: 0}
-  _topCommentText: {fileID: 0}
-  _followerCountText: {fileID: 0}
+  _topCommentNameText: {fileID: 1255372155}
+  _topCommentText: {fileID: 616740908}
+  _followerCountText: {fileID: 1314451447}
   _backToMenuButton: {fileID: 87028955}
   _canvasGroup: {fileID: 1226705317}
 --- !u!1 &1255372153

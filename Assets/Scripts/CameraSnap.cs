@@ -75,6 +75,7 @@ public class CameraSnap : MonoBehaviour
                 Debug.Log($"Best photo updated");
             }
 
+            TrashCan.HandleTrashInPicture(transform.position, targetCamera);
             Hud.instance.TakePicture(highestRayCount);
         }
     }

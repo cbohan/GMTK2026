@@ -54,6 +54,11 @@ public class Hud : MonoBehaviour
         _trashAmount--;
     }
 
+    public void AddTrash()
+    {
+        _trashAmount += 2;
+    }
+
     public void TakePicture(int highestRayCount)
     {
         bestPhotoScore = highestRayCount;

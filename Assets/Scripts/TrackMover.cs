@@ -11,9 +11,12 @@ public class TrackMover : MonoBehaviour
     [SerializeField] private float _heightAboveTrack = 1f;
     [SerializeField] private float _stepHeight = .25f;
     [SerializeField] private float _stepFrequency = 1f;
-
+    [SerializeField] private AudioSource _stepAudio;
+    [SerializeField] private AudioClip[] _stepAudioClips;
+    
     private float _distance;
     private float _normalizedDistance;
+    private float _previousPointInStepCycle;
     
     private void Update()
     {
@@ -29,7 +32,21 @@ public class TrackMover : MonoBehaviour
         {
             TrackPosition = hit.point;
         }
-        TrackPosition += Vector3.up * (_heightAboveTrack + _stepHeight * Mathf.Abs(Mathf.Sin(_stepFrequency * Time.time))) ;
+
+        var pointInStepCycle = Mathf.Sin(_stepFrequency * Time.time);
+        TrackPosition += Vector3.up * (_heightAboveTrack + _stepHeight * Mathf.Abs(pointInStepCycle));
         _player.position = TrackPosition;
+
+        var stepOccurred =
+            pointInStepCycle >= 0 && _previousPointInStepCycle < 0 ||
+            pointInStepCycle < 0 && _previousPointInStepCycle >= 0;
+        if (stepOccurred)
+        {
+            _stepAudio.volume = Random.Range(.6f, 65f);
+            _stepAudio.pitch = Random.Range(.95f, 1.05f);
+            _stepAudio.PlayOneShot(_stepAudioClips[Random.Range(0, _stepAudioClips.Length)]);
+        }
+
+        _previousPointInStepCycle = pointInStepCycle;
     }
 }

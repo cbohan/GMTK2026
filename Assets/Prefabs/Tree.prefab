@@ -43,7 +43,7 @@ MeshFilter:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 870396499637361354}
-  m_Mesh: {fileID: -8171986677701637005, guid: 0c665700a1b900641aaba9a4c023a79d, type: 3}
+  m_Mesh: {fileID: -1132525435669848285, guid: 9d124e42c64116d4ca160f8a355c2ecf, type: 3}
 --- !u!23 &8799731957199087974
 MeshRenderer:
   m_ObjectHideFlags: 0
@@ -145,5 +145,5 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 0f31824905f77f748a8a7c080be9b3d3, type: 3}
-  m_Name:
+  m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::MeshBoundsSetter

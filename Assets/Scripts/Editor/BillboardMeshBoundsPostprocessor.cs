@@ -12,6 +12,8 @@ public class BillboardMeshBoundsPostprocessor : AssetPostprocessor
     {
         "Assets/Art/plane.blend",
         "Assets/Art/planeInGround.blend",
+        "Assets/Art/plane_fbx.fbx",
+        "Assets/Art/planeInGround_fbx.fbx",
     };
 
     private void OnPostprocessModel(GameObject root)

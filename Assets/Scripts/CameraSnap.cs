@@ -9,13 +9,11 @@ public class CameraSnap : MonoBehaviour
     [SerializeField] private int imageWidth = 1920;
     [SerializeField] private int imageHeight = 1080;
     [SerializeField] private string fileName = "captured_image.png";
-    private LayerMask obstacleLayerMask;
-    private LayerMask jimothyLayerMask;
+    private LayerMask layerMask;
     void Awake()
     {
         // Grab the integer values for the layer masks of Jimothy and everything else in the game
-        obstacleLayerMask = LayerMask.GetMask("Obstacle", "Terrain");
-        jimothyLayerMask = LayerMask.GetMask("Jimothy");
+        layerMask = LayerMask.GetMask("Jimothy", "Obstacle", "Terrain");
     }
     public void Update()
     {
@@ -42,23 +40,28 @@ public class CameraSnap : MonoBehaviour
 
             // Send out an array of Raycasts from the position of the camera and calculate how much of the image was Jimothy by percentage
             RaycastHit hit;
+            int hitCount = 0;
             for (float x = -0.5f; x < 0.5f; x+=0.1f)
             {
                 for (float y = -0.8f; y < 0.8f; y+=0.1f)
                 {
                     Vector3 testDirection = new Vector3(x,y,(2.0f - Mathf.Abs(x)));
-                    if (Physics.Raycast(transform.position, transform.TransformDirection(testDirection), out hit, Mathf.Infinity, jimothyLayerMask))
+                    if (Physics.Raycast(transform.position, transform.TransformDirection(testDirection), out hit, Mathf.Infinity, layerMask))
                     {
-                        Debug.DrawRay(transform.position, transform.TransformDirection(testDirection) * hit.distance, Color.yellow, 20.0f); 
-                        Debug.Log("Found Jimothy"); 
+                        if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Jimothy"))
+                        {
+                            hitCount++;
+                            Debug.DrawRay(transform.position, transform.TransformDirection(testDirection) * hit.distance, Color.green, 10.0f);
+                        }
+                        else if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Terrain"))
+                        {
+                            Debug.DrawRay(transform.position, transform.TransformDirection(testDirection) * hit.distance, Color.red, 10.0f);
+                        }
                     }
-                    else if (Physics.Raycast(transform.position, transform.TransformDirection(testDirection), out hit, Mathf.Infinity, obstacleLayerMask))
-                    { 
-                        Debug.DrawRay(transform.position, transform.TransformDirection(testDirection) * hit.distance, Color.white, 20.0f); 
-                        Debug.Log("Missed Jimothy"); 
-                    }
+                    
                 }
             }
+            Debug.Log($"{hitCount} rays hit Jimothy");
 
             Hud.instance.TakePicture();
         }

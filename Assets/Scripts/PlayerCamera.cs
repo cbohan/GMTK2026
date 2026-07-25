@@ -18,6 +18,8 @@ public class PlayerCamera : MonoBehaviour
     
     private void Update()
     {
+        if (EndOfLevel.instance.IsShown) return;
+        
         _yaw += _lookAction.action.ReadValue<Vector2>().x * _sensitivity;
         _pitch -= _lookAction.action.ReadValue<Vector2>().y * _sensitivity;
         

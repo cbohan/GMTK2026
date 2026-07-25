@@ -22,6 +22,7 @@ public class TrashThrower : MonoBehaviour
     private void Update()
     {
         if (!_throwAction.action.WasPressedThisFrame()) return;
+        if (Hud.instance.TrashAmount <= 0) return;
         
         var targetPositon = _camera.transform.position + _camera.transform.forward * 10f;
         var ray = _camera.ViewportPointToRay(new Vector3(.5f, .5f, 0f));
@@ -35,5 +36,6 @@ public class TrashThrower : MonoBehaviour
         
         var trash = Instantiate(_trashPrefab, _trashThrowOrigin.position, Quaternion.identity);
         trash.Initialize(_trashThrowOrigin.position, velocity);
+        Hud.instance.ThrowTrash();
     }
 }

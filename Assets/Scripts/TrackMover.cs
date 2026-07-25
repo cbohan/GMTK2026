@@ -17,6 +17,8 @@ public class TrackMover : MonoBehaviour
     
     private void Update()
     {
+        if (EndOfLevel.instance.IsShown) return;
+        
         _distance += _speed * Time.deltaTime;
         _normalizedDistance = _distance / _track.Spline.CalculateLength(_track.transform.localToWorldMatrix);
         TrackPosition =

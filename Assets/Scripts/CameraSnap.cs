@@ -60,7 +60,7 @@ public class CameraSnap : MonoBehaviour
                 }
             }
 
-
+            Hud.instance.TakePicture();
         }
     }
 }

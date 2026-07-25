@@ -10,8 +10,14 @@ public class EndOfLevel : MonoBehaviour
     public bool IsShown = false;
     
     [SerializeField] private TMP_Text _followersText;
+    [SerializeField] private TMP_Text _topCommentNameText;
+    [SerializeField] private TMP_Text _topCommentText;
     [SerializeField] private Button _backToMenuButton;
     [SerializeField] private CanvasGroup _canvasGroup;
+    private string[] usernames = new string[]{"SlipstreamWorks", "DookieDealer", "Medley_Lark", "Aether", "NotJim0thy", "Raccoon<3", "Feetpicsonly"};
+    private string[] badComments = new string[]{"Not sure if trolling or just dumb", "No Jimothy trash", "git gud spud"};
+    private string[] midComments = new string[]{"Wish the pic was a little clearer", "bruh hold the phone still", "ok whatev"};
+    private string[] flyComments = new string[]{"Jimothy!!!! OMG I LOV HIMB", "what a cute little guy!!!", "BABY!!!!!1!!"};
     
     private void Awake()
     {
@@ -24,8 +30,21 @@ public class EndOfLevel : MonoBehaviour
         _backToMenuButton.onClick.AddListener(BackToMenu);
     }
 
-    public void Show()
+    public void Show(int bestPhotoScore)
     {
+        _topCommentNameText.text = usernames[Random.Range(0,usernames.Length)];
+        if (bestPhotoScore < 5 )
+        {
+            _topCommentText.text = badComments[Random.Range(0,badComments.Length)];
+        }
+        else if (bestPhotoScore < 15)
+        {
+            _topCommentText.text = midComments[Random.Range(0,midComments.Length)];
+        }
+        else
+        {
+            _topCommentText.text = flyComments[Random.Range(0,flyComments.Length)];
+        }
         _canvasGroup.alpha = 1f;
         _canvasGroup.blocksRaycasts = true;
         _canvasGroup.interactable = true;

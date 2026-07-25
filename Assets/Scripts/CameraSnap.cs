@@ -1,15 +1,19 @@
 using System.IO;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.UI;
 
 public class CameraSnap : MonoBehaviour
 {
     [Header("Settings")]
     [SerializeField] private Camera targetCamera;
-    [SerializeField] private int imageWidth = 1920;
-    [SerializeField] private int imageHeight = 1080;
+    [SerializeField] private int imageWidth = 600;
+    [SerializeField] private int imageHeight = 900;
     [SerializeField] private string fileName = "captured_image.png";
+    [SerializeField] private RawImage bestPhoto;
     private LayerMask layerMask;
+    private int highestRayCount = 0;
+    private bool photoTaken = false;
     void Awake()
     {
         // Grab the integer values for the layer masks of Jimothy and everything else in the game
@@ -32,11 +36,11 @@ public class CameraSnap : MonoBehaviour
             // Set the RenderTexture back to null, otherwise the screen will just show the phone camera view
             RenderTexture.active = null;
 
-            // Create a PNG image of the image texture and save it off to local cache
-            byte[] bytes = image.EncodeToPNG();
-            string path = Path.Combine(Application.persistentDataPath, fileName);
-            File.WriteAllBytes(path, bytes);
-            Debug.Log($"Image successfully saved to: {path}");
+            // Create a PNG image of the image texture and save it off to local cache (for debugging only)
+            // byte[] bytes = image.EncodeToPNG();
+            // string path = Path.Combine(Application.persistentDataPath, fileName);
+            // File.WriteAllBytes(path, bytes);
+            // Debug.Log($"Image successfully saved to: {path}");
 
             // Send out an array of Raycasts from the position of the camera and calculate how much of the image was Jimothy by percentage
             RaycastHit hit;
@@ -51,19 +55,27 @@ public class CameraSnap : MonoBehaviour
                         if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Jimothy"))
                         {
                             hitCount++;
-                            Debug.DrawRay(transform.position, transform.TransformDirection(testDirection) * hit.distance, Color.green, 10.0f);
+                            // Debug.DrawRay(transform.position, transform.TransformDirection(testDirection) * hit.distance, Color.green, 10.0f);
                         }
-                        else if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Terrain"))
-                        {
-                            Debug.DrawRay(transform.position, transform.TransformDirection(testDirection) * hit.distance, Color.red, 10.0f);
-                        }
+                        // else if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Terrain"))
+                        // {
+                        //     Debug.DrawRay(transform.position, transform.TransformDirection(testDirection) * hit.distance, Color.red, 10.0f);
+                        // }
                     }
                     
                 }
             }
             Debug.Log($"{hitCount} rays hit Jimothy");
 
-            Hud.instance.TakePicture();
+            if ((!photoTaken) || (hitCount > highestRayCount))
+            {
+                photoTaken = true;
+                highestRayCount = hitCount;
+                bestPhoto.texture = image;
+                Debug.Log($"Best photo updated");
+            }
+
+            Hud.instance.TakePicture(highestRayCount);
         }
     }
 }

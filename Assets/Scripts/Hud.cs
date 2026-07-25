@@ -17,10 +17,13 @@ public class Hud : MonoBehaviour
     public int TrashAmount => _trashAmount;
     [SerializeField] private int _trashAmount;
     [SerializeField] private TMP_Text _trashText;
+    private int bestPhotoScore = 0;
+    private bool levelActive = true;
 
     private void Awake()
     {
         instance = this;
+        levelActive = true;
     }
     
     private void Update()
@@ -38,9 +41,10 @@ public class Hud : MonoBehaviour
         
         _batteryAmount -= Time.deltaTime;
         
-        if (_batteryAmount <= 0)
+        if (_batteryAmount <= 0 && levelActive)
         {
-            EndOfLevel.instance.Show();
+            levelActive = false;
+            EndOfLevel.instance.Show(bestPhotoScore);
             Cursor.lockState = CursorLockMode.None;
         }
     }
@@ -50,8 +54,9 @@ public class Hud : MonoBehaviour
         _trashAmount--;
     }
 
-    public void TakePicture()
+    public void TakePicture(int highestRayCount)
     {
+        bestPhotoScore = highestRayCount;
         _batteryAmount -= 5f;
     }
 }

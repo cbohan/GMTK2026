@@ -32,6 +32,14 @@ public class EndOfLevel : MonoBehaviour
 
     public void Show(int bestPhotoScore, float startingFollowerCount, float followerCount)
     {
+        if (followerCount > startingFollowerCount)
+        {
+            _followersText.text = $"You gained {(int)(followerCount - startingFollowerCount)} followers!";
+        }
+        else
+        {
+            _followersText.text = $"You lost {(int)(startingFollowerCount - followerCount)} followers!";
+        }
         _topCommentNameText.text = usernames[Random.Range(0,usernames.Length)];
         if (bestPhotoScore < 5 )
         {

@@ -9,7 +9,7 @@ public class CameraSnap : MonoBehaviour
     [SerializeField] private Camera targetCamera;
     [SerializeField] private int imageWidth = 600;
     [SerializeField] private int imageHeight = 900;
-    [SerializeField] private string fileName = "captured_image.png";
+    //[SerializeField] private string fileName = "captured_image.png";
     [SerializeField] private RawImage bestPhoto;
     private LayerMask layerMask;
     private int highestRayCount = 0;
@@ -49,7 +49,7 @@ public class CameraSnap : MonoBehaviour
             {
                 for (float y = -0.8f; y < 0.8f; y+=0.1f)
                 {
-                    Vector3 testDirection = new Vector3(x,y,(2.0f - Mathf.Abs(x)));
+                    Vector3 testDirection = new Vector3(x,y,2.0f - Mathf.Abs(x));
                     if (Physics.Raycast(transform.position, transform.TransformDirection(testDirection), out hit, Mathf.Infinity, layerMask))
                     {
                         if (hit.transform.gameObject.layer == LayerMask.NameToLayer("Jimothy"))
@@ -67,6 +67,7 @@ public class CameraSnap : MonoBehaviour
             }
             Debug.Log($"{hitCount} rays hit Jimothy");
 
+            // Save the photo to the end-of-level "best photo" image if a photo has not yet been taken or if the photo is a new high score for this round
             if ((!photoTaken) || (hitCount > highestRayCount))
             {
                 photoTaken = true;
@@ -75,8 +76,8 @@ public class CameraSnap : MonoBehaviour
                 Debug.Log($"Best photo updated");
             }
 
-            TrashCan.HandleTrashInPicture(transform.position, targetCamera);
-            Hud.instance.TakePicture(highestRayCount);
+            bool canWasHit = TrashCan.HandleTrashInPicture(transform.position, targetCamera);
+            Hud.instance.TakePicture(hitCount, highestRayCount, canWasHit);
         }
     }
 }

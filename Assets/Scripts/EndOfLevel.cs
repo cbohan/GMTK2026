@@ -12,7 +12,6 @@ public class EndOfLevel : MonoBehaviour
     [SerializeField] private TMP_Text _followersText;
     [SerializeField] private TMP_Text _topCommentNameText;
     [SerializeField] private TMP_Text _topCommentText;
-    [SerializeField] private TMP_Text _followerCountText;
     [SerializeField] private Button _backToMenuButton;
     [SerializeField] private CanvasGroup _canvasGroup;
     private string[] usernames = new string[]{"SlipstreamWorks", "DookieDealer", "Medley_Lark", "Aether", "NotJim0thy", "Raccoon<3", "Feetpicsonly"};
@@ -31,7 +30,7 @@ public class EndOfLevel : MonoBehaviour
         _backToMenuButton.onClick.AddListener(BackToMenu);
     }
 
-    public void Show(int bestPhotoScore)
+    public void Show(int bestPhotoScore, float startingFollowerCount, float followerCount)
     {
         _topCommentNameText.text = usernames[Random.Range(0,usernames.Length)];
         if (bestPhotoScore < 5 )

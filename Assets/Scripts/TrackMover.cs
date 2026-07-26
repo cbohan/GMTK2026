@@ -18,8 +18,27 @@ public class TrackMover : MonoBehaviour
     private float _normalizedDistance;
     private float _previousPointInStepCycle;
     
+    private void Awake()
+    {
+        _distance += _speed * Time.deltaTime;
+        _normalizedDistance = _distance / _track.Spline.CalculateLength(_track.transform.localToWorldMatrix);
+        TrackPosition =
+            (Vector3)_track.Spline.EvaluatePosition(_normalizedDistance) +
+            _track.transform.position;
+
+        if (Physics.Raycast(TrackPosition + Vector3.up * 10, Vector3.down, out var hit))
+        {
+            TrackPosition = hit.point;
+        }
+
+        var pointInStepCycle = Mathf.Sin(_stepFrequency * Time.time);
+        TrackPosition += Vector3.up * (_heightAboveTrack + _stepHeight * Mathf.Abs(pointInStepCycle));
+        _player.position = TrackPosition;
+    }
+
     private void Update()
     {
+        if (!Hud.instance.levelStarted) return;
         if (EndOfLevel.instance.IsShown) return;
         
         _distance += _speed * Time.deltaTime;

@@ -1,6 +1,8 @@
 using System;
+using System.Collections;
 using TMPro;
 using UnityEngine;
+using UnityEngine.InputSystem;
 using UnityEngine.UI;
 
 public class Hud : MonoBehaviour
@@ -19,28 +21,43 @@ public class Hud : MonoBehaviour
     [SerializeField] private TMP_Text _trashText;
 
     [Header("Followers")]
-    public float followerCount => _followerCount;
-    [SerializeField] private float _followerCount;
     [SerializeField] private float _followerDrainPerFrame;
     [SerializeField] private TMP_Text _followerText;
     [SerializeField] private TMP_Text _followerEndText;
 
     [Header("Other")]
+    public bool levelStarted;
+    [SerializeField] private RawImage _levelNewspaper;
     [SerializeField] private TMP_Text _snapText;
     private int bestPhotoScore = 0;
-    private bool levelActive = true;
     private float _startingFollowerCount;
     private int _snapTextUptime;
     private void Awake()
     {
         instance = this;
-        levelActive = true;
-        _startingFollowerCount = _followerCount;
+        _startingFollowerCount = FollowerTracker.Instance.followerCount;
         _snapTextUptime = 0;
+        _snapText.text = "";
+        _followerText.text = $"{(int)FollowerTracker.Instance.followerCount}";
+        levelStarted = false;
     }
     
     private void Update()
     {
+        if (!levelStarted)
+        {
+            Mouse mouse = Mouse.current;
+            if (mouse.leftButton.wasPressedThisFrame)
+            {
+                StartCoroutine(StartMoving(2.5f)); 
+                _levelNewspaper.CrossFadeAlpha(0.0f,1,false);
+            }
+            else
+            {
+                return;
+            }
+        }
+
         // Display the correct battery icon in the hud based on the percentage of the battery remaining
         var normalizedBattery = _batteryAmount / 100f;
         var batteryImageIndex = Mathf.FloorToInt(Mathf.Lerp(
@@ -54,13 +71,13 @@ public class Hud : MonoBehaviour
         // Display the amount of trash left to throw
         _trashText.text = $"{_trashAmount}";
 
-        _followerText.text = $"{(int)_followerCount}";
+        _followerText.text = $"{(int)FollowerTracker.Instance.followerCount}";
         
         // If the level is active, decrement the number of followers and the battery amount
-        if (levelActive)
+        if (!EndOfLevel.instance.IsShown)
         {
             _batteryAmount -= Time.deltaTime;
-            _followerCount -= _followerDrainPerFrame;
+            FollowerTracker.Instance.followerCount -= _followerDrainPerFrame;
 
             if (_snapTextUptime > 0)
             {
@@ -74,9 +91,8 @@ public class Hud : MonoBehaviour
             // When the battery hits zero, freeze player controls and show the end-of-level screen
             if (_batteryAmount <= 0)
             {
-                levelActive = false;
-                _followerEndText.text = $"{(int)_followerCount} followers";
-                EndOfLevel.instance.Show(bestPhotoScore, _startingFollowerCount, _followerCount);
+                _followerEndText.text = $"{(int)FollowerTracker.Instance.followerCount} followers";
+                EndOfLevel.instance.Show(bestPhotoScore, _startingFollowerCount, FollowerTracker.Instance.followerCount);
                 Cursor.lockState = CursorLockMode.None;
             }
         }
@@ -101,16 +117,22 @@ public class Hud : MonoBehaviour
         else if (hitCount == 0)
         {
             _snapText.text = "<color=\"red\">No Jimothy in the photo!</color>";
-            _followerCount -= 100f;
+            FollowerTracker.Instance.followerCount -= 100f;
         }
         else
         {
             _snapText.text = "<color=\"green\">Nice Shot!</color>";
-            _followerCount += (float)hitCount * 100f;
+            FollowerTracker.Instance.followerCount += (float)hitCount * 100f;
         }
         _snapTextUptime = 100;
         _snapText.alpha = 100f;
         bestPhotoScore = highestRayCount;
         _batteryAmount -= 5f;
+    }
+
+    private IEnumerator StartMoving(float delayInSeconds)
+    {
+        yield return new WaitForSeconds(delayInSeconds);
+        levelStarted = true;
     }
 }

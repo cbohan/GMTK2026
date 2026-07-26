@@ -14,6 +14,7 @@ public class EndOfLevel : MonoBehaviour
     [SerializeField] private TMP_Text _topCommentText;
     [SerializeField] private Button _backToMenuButton;
     [SerializeField] private CanvasGroup _canvasGroup;
+    [SerializeField] private string _nextScene;
     private string[] usernames = new string[]{"SlipstreamWorks", "DookieDealer", "Medley_Lark", "Aether", "NotJim0thy", "Raccoon<3", "Feetpicsonly"};
     private string[] badComments = new string[]{"Not sure if trolling or just dumb", "No Jimothy trash", "git gud spud"};
     private string[] midComments = new string[]{"Wish the pic was a little clearer", "bruh hold the phone still", "ok whatev"};
@@ -61,6 +62,6 @@ public class EndOfLevel : MonoBehaviour
     
     private void BackToMenu()
     {
-        SceneManager.LoadScene(0);
+        SceneManager.LoadScene(_nextScene);
     }
 }

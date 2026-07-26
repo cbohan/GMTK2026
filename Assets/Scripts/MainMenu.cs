@@ -21,30 +21,30 @@ public class MainMenu : MonoBehaviour
         _playButton.onClick.AddListener(Play);
         _creditsButton.onClick.AddListener(Credits);
         
-        _mainMenuCanvasGroup.alpha = 1f;
-        _mainMenuCanvasGroup.blocksRaycasts = true;
-        _mainMenuCanvasGroup.interactable = true;
+        // _mainMenuCanvasGroup.alpha = 1f;
+        // _mainMenuCanvasGroup.blocksRaycasts = true;
+        // _mainMenuCanvasGroup.interactable = true;
         
-        _levelSelectCanvasGroup.alpha = 0f;
-        _levelSelectCanvasGroup.blocksRaycasts = false;
-        _levelSelectCanvasGroup.interactable = false;
+        // _levelSelectCanvasGroup.alpha = 0f;
+        // _levelSelectCanvasGroup.blocksRaycasts = false;
+        // _levelSelectCanvasGroup.interactable = false;
     }
 
     private void Play()
     {
         if (_theresOnlyOneLevel)
         {
-            SceneManager.LoadScene(_gameSceneIndex);
+            SceneManager.LoadScene("Level1_DownsScene");
             return;
         }
 
-        _mainMenuCanvasGroup.alpha = 0f;
-        _mainMenuCanvasGroup.blocksRaycasts = false;
-        _mainMenuCanvasGroup.interactable = false;
+        // _mainMenuCanvasGroup.alpha = 0f;
+        // _mainMenuCanvasGroup.blocksRaycasts = false;
+        // _mainMenuCanvasGroup.interactable = false;
         
-        _levelSelectCanvasGroup.alpha = 1f;
-        _levelSelectCanvasGroup.blocksRaycasts = true;
-        _levelSelectCanvasGroup.interactable = true;
+        // _levelSelectCanvasGroup.alpha = 1f;
+        // _levelSelectCanvasGroup.blocksRaycasts = true;
+        // _levelSelectCanvasGroup.interactable = true;
     }
     
     private void Credits()

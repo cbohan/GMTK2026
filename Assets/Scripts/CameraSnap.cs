@@ -25,7 +25,7 @@ public class CameraSnap : MonoBehaviour
     public void Update()
     {
         Mouse mouse = Mouse.current;
-        if (mouse.leftButton.wasPressedThisFrame)
+        if (mouse.leftButton.wasPressedThisFrame && !EndOfLevel.instance.IsShown && Hud.instance.levelStarted)
         {
             // Force a render of the phone camera source and set the RenderTexture to the texture used in the phone, which is needed for ReadPixels to know what to sample from
             targetCamera.Render();

@@ -1313,6 +1313,51 @@ MonoBehaviour:
   m_EditorClassIdentifier: Assembly-CSharp::AmbientSfx
   _ambientAudioClips:
   - {fileID: 8300000, guid: 875af3783fc2f3647b78d9b85d506ad7, type: 3}
+--- !u!1 &537426672
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 537426674}
+  - component: {fileID: 537426673}
+  m_Layer: 0
+  m_Name: FollowerTracker
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &537426673
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537426672}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b961a42aeed80c94baaccacf69510cf2, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: Assembly-CSharp::FollowerTracker
+  followerCount: 0
+--- !u!4 &537426674
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 537426672}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 846.2307, y: -0, z: 14723.169}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!4 &564785318 stripped
 Transform:
   m_CorrespondingSourceObject: {fileID: 5559218440963940999, guid: ea7274d170596584297c9f34ce34caca, type: 3}
@@ -1538,6 +1583,78 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &939745774
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 939745775}
+  - component: {fileID: 939745777}
+  - component: {fileID: 939745778}
+  m_Layer: 5
+  m_Name: Newspaper
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!224 &939745775
+RectTransform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939745774}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 1278916985}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+  m_AnchorMin: {x: 0.5, y: 0.5}
+  m_AnchorMax: {x: 0.5, y: 0.5}
+  m_AnchoredPosition: {x: 0, y: 0}
+  m_SizeDelta: {x: 1080, y: 1080}
+  m_Pivot: {x: 0.5, y: 0.5}
+--- !u!222 &939745777
+CanvasRenderer:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939745774}
+  m_CullTransparentMesh: 1
+--- !u!114 &939745778
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 939745774}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1344c3c82d62a2a41a3576d8abb8e3ea, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: UnityEngine.UI::UnityEngine.UI.RawImage
+  m_Material: {fileID: 0}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+  m_RaycastTarget: 1
+  m_RaycastPadding: {x: 0, y: 0, z: 0, w: 0}
+  m_Maskable: 1
+  m_OnCullStateChanged:
+    m_PersistentCalls:
+      m_Calls: []
+  m_Texture: {fileID: 2800000, guid: d4f1b1b40b9aea044b978bf654d70720, type: 3}
+  m_UVRect:
+    serializedVersion: 2
+    x: 0
+    y: 0
+    width: 1
+    height: 1
 --- !u!114 &988023901 stripped
 MonoBehaviour:
   m_CorrespondingSourceObject: {fileID: 7942795444194819392, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
@@ -2135,6 +2252,7 @@ RectTransform:
   - {fileID: 1456196982}
   - {fileID: 351876130}
   - {fileID: 1147345769}
+  - {fileID: 939745775}
   - {fileID: 1226705316}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
@@ -2998,6 +3116,10 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 1278916985}
     m_Modifications:
+    - target: {fileID: 1932809281399395070, guid: 7cd9d471aedbceb459a1e4a0c27e41c8, type: 3}
+      propertyPath: _nextScene
+      value: Level2_ValleyScene
+      objectReference: {fileID: 0}
     - target: {fileID: 2162653167034741449, guid: 7cd9d471aedbceb459a1e4a0c27e41c8, type: 3}
       propertyPath: m_Pivot.x
       value: 0.5
@@ -3077,6 +3199,10 @@ PrefabInstance:
     - target: {fileID: 2162653167034741449, guid: 7cd9d471aedbceb459a1e4a0c27e41c8, type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 3706967632241906754, guid: 7cd9d471aedbceb459a1e4a0c27e41c8, type: 3}
+      propertyPath: m_text
+      value: Next Level
       objectReference: {fileID: 0}
     - target: {fileID: 6756739616623874424, guid: 7cd9d471aedbceb459a1e4a0c27e41c8, type: 3}
       propertyPath: m_Name
@@ -3241,6 +3367,10 @@ PrefabInstance:
       propertyPath: m_AnchoredPosition.y
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: 2073216410839234218, guid: 3c04e5aaa39cd2f42ae38c8fecd90dec, type: 3}
+      propertyPath: _levelNewspaper
+      value: 
+      objectReference: {fileID: 939745778}
     - target: {fileID: 2073216410839234218, guid: 3c04e5aaa39cd2f42ae38c8fecd90dec, type: 3}
       propertyPath: _followerEndText
       value: 
@@ -3444,3 +3574,4 @@ SceneRoots:
   - {fileID: 163689139}
   - {fileID: 4473251616201492169}
   - {fileID: 364521177}
+  - {fileID: 537426674}

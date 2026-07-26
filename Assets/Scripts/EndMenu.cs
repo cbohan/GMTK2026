@@ -8,7 +8,7 @@ public class EndMenu : MonoBehaviour
     [SerializeField] private Button _replayButton;
     [SerializeField] private TMP_Text _finalScore;
     
-    private void Awake()
+    private void Start()
     { 
         var followerCount = (int)FollowerTracker.Instance.followerCount;
 

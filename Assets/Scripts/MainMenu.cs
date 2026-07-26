@@ -22,12 +22,14 @@ public class MainMenu : MonoBehaviour
     [SerializeField] private CanvasGroup _creditsCanvasGroup;
     [SerializeField] private Button _creditsBackButton;
 
+    [Header("Other")]
+    [SerializeField] private AudioSource _buttonInteractionAudioSource;
+    
     private void Awake()
     {
         _playButton.onClick.AddListener(Play);
         _controlsButton.onClick.AddListener(Controls);
         _creditsButton.onClick.AddListener(Credits);
-        
         _controlsBackButton.onClick.AddListener(Back);
         _creditsBackButton.onClick.AddListener(Back);
         
@@ -48,6 +50,7 @@ public class MainMenu : MonoBehaviour
         if (_theresOnlyOneLevel)
         {
             SceneManager.LoadScene("Level1_DownsScene");
+            _buttonInteractionAudioSource.Play();
         }
     }
 
@@ -56,6 +59,7 @@ public class MainMenu : MonoBehaviour
         SetCanvasGroupActive(_mainMenuCanvasGroup, false);
         SetCanvasGroupActive(_controlsCanvasGroup, true);
         SetCanvasGroupActive(_creditsCanvasGroup, false);
+        _buttonInteractionAudioSource.Play();
     }
 
     private void Credits()
@@ -63,6 +67,7 @@ public class MainMenu : MonoBehaviour
         SetCanvasGroupActive(_mainMenuCanvasGroup, false);
         SetCanvasGroupActive(_controlsCanvasGroup, false);
         SetCanvasGroupActive(_creditsCanvasGroup, true);
+        _buttonInteractionAudioSource.Play();
     }
 
     private void Back()
@@ -70,5 +75,6 @@ public class MainMenu : MonoBehaviour
         SetCanvasGroupActive(_mainMenuCanvasGroup, true);
         SetCanvasGroupActive(_controlsCanvasGroup, false);
         SetCanvasGroupActive(_creditsCanvasGroup, false);
+        _buttonInteractionAudioSource.Play();
     }
 }

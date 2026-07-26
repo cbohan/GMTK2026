@@ -25,15 +25,18 @@ public class Hud : MonoBehaviour
     [SerializeField] private TMP_Text _followerText;
     [SerializeField] private TMP_Text _followerEndText;
 
+    [Header("Other")]
+    [SerializeField] private TMP_Text _snapText;
     private int bestPhotoScore = 0;
     private bool levelActive = true;
     private float _startingFollowerCount;
-
+    private int _snapTextUptime;
     private void Awake()
     {
         instance = this;
         levelActive = true;
         _startingFollowerCount = _followerCount;
+        _snapTextUptime = 0;
     }
     
     private void Update()
@@ -58,6 +61,15 @@ public class Hud : MonoBehaviour
         {
             _batteryAmount -= Time.deltaTime;
             _followerCount -= _followerDrainPerFrame;
+
+            if (_snapTextUptime > 0)
+            {
+                _snapTextUptime--;
+            }
+            else
+            {
+                _snapText.alpha = 0f;
+            }
             
             // When the battery hits zero, freeze player controls and show the end-of-level screen
             if (_batteryAmount <= 0)
@@ -84,16 +96,20 @@ public class Hud : MonoBehaviour
     {
         if (trashCan)
         {
-            
+            _snapText.text = "<color=\"yellow\">Got some trash!</color>";
         }
         else if (hitCount == 0)
         {
+            _snapText.text = "<color=\"red\">No Jimothy in the photo!</color>";
             _followerCount -= 100f;
         }
         else
         {
+            _snapText.text = "<color=\"green\">Nice Shot!</color>";
             _followerCount += (float)hitCount * 100f;
         }
+        _snapTextUptime = 100;
+        _snapText.alpha = 100f;
         bestPhotoScore = highestRayCount;
         _batteryAmount -= 5f;
     }

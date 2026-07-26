@@ -137,7 +137,7 @@ MonoBehaviour:
   m_OnCullStateChanged:
     m_PersistentCalls:
       m_Calls: []
-  m_text: Back to Menu
+  m_text: Next Level
   m_isRightToLeft: 0
   m_fontAsset: {fileID: 11400000, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
   m_sharedMaterial: {fileID: 2180264, guid: 8f586378b4e144a9851e7b34d9b748ee, type: 2}
@@ -407,6 +407,7 @@ MonoBehaviour:
   _topCommentText: {fileID: 5050565348157898122}
   _backToMenuButton: {fileID: 1924384254476371477}
   _canvasGroup: {fileID: 7619717250280499711}
+  _nextScene: 
 --- !u!222 &587813636084351573
 CanvasRenderer:
   m_ObjectHideFlags: 0

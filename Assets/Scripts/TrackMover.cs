@@ -4,6 +4,7 @@ using UnityEngine.Splines;
 public class TrackMover : MonoBehaviour
 {
     public static Vector3 TrackPosition;
+    public static Vector3 TrackDirection;
     
     [SerializeField] private SplineContainer _track;
     [SerializeField] private Transform _player;
@@ -30,6 +31,9 @@ public class TrackMover : MonoBehaviour
         {
             TrackPosition = hit.point;
         }
+
+        TrackDirection = _track.transform.localToWorldMatrix.MultiplyVector(
+            _track.Spline.EvaluateTangent(_normalizedDistance)).normalized;
 
         var pointInStepCycle = Mathf.Sin(_stepFrequency * Time.time);
         TrackPosition += Vector3.up * (_heightAboveTrack + _stepHeight * Mathf.Abs(pointInStepCycle));

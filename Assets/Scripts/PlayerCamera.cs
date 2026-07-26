@@ -15,6 +15,14 @@ public class PlayerCamera : MonoBehaviour
     {
         Cursor.lockState = CursorLockMode.Locked;
     }
+
+    private void Start()
+    {
+        var direction = TrackMover.TrackDirection;
+        _yaw = Mathf.Atan2(direction.x, direction.z) * Mathf.Rad2Deg;
+        _pitch = 0f;
+        _Transform.localRotation = Quaternion.Euler(_pitch, _yaw, 0f);
+    }
     
     private void Update()
     {

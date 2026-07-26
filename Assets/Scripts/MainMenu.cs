@@ -11,23 +11,36 @@ public class MainMenu : MonoBehaviour
     [Header("Main Menu")]
     [SerializeField] private CanvasGroup _mainMenuCanvasGroup;
     [SerializeField] private Button _playButton;
+    [SerializeField] private Button _controlsButton;
     [SerializeField] private Button _creditsButton;
 
-    [Header("Level Select")]
-    [SerializeField] private CanvasGroup _levelSelectCanvasGroup;
+    [Header("Controls")]
+    [SerializeField] private CanvasGroup _controlsCanvasGroup;
+    [SerializeField] private Button _controlsBackButton;
     
+    [Header("Credits")]
+    [SerializeField] private CanvasGroup _creditsCanvasGroup;
+    [SerializeField] private Button _creditsBackButton;
+
     private void Awake()
     {
         _playButton.onClick.AddListener(Play);
+        _controlsButton.onClick.AddListener(Controls);
         _creditsButton.onClick.AddListener(Credits);
         
-        // _mainMenuCanvasGroup.alpha = 1f;
-        // _mainMenuCanvasGroup.blocksRaycasts = true;
-        // _mainMenuCanvasGroup.interactable = true;
+        _controlsBackButton.onClick.AddListener(Back);
+        _creditsBackButton.onClick.AddListener(Back);
         
-        // _levelSelectCanvasGroup.alpha = 0f;
-        // _levelSelectCanvasGroup.blocksRaycasts = false;
-        // _levelSelectCanvasGroup.interactable = false;
+        SetCanvasGroupActive(_mainMenuCanvasGroup, true);
+        SetCanvasGroupActive(_controlsCanvasGroup, false);
+        SetCanvasGroupActive(_creditsCanvasGroup, false);
+    }
+
+    private void SetCanvasGroupActive(CanvasGroup canvasGroup, bool isActive)
+    {
+        canvasGroup.alpha = isActive ? 1f : 0f;
+        canvasGroup.blocksRaycasts = isActive;
+        canvasGroup.interactable = isActive;
     }
 
     private void Play()
@@ -35,20 +48,27 @@ public class MainMenu : MonoBehaviour
         if (_theresOnlyOneLevel)
         {
             SceneManager.LoadScene("Level1_DownsScene");
-            return;
         }
-
-        // _mainMenuCanvasGroup.alpha = 0f;
-        // _mainMenuCanvasGroup.blocksRaycasts = false;
-        // _mainMenuCanvasGroup.interactable = false;
-        
-        // _levelSelectCanvasGroup.alpha = 1f;
-        // _levelSelectCanvasGroup.blocksRaycasts = true;
-        // _levelSelectCanvasGroup.interactable = true;
     }
-    
+
+    private void Controls()
+    {
+        SetCanvasGroupActive(_mainMenuCanvasGroup, false);
+        SetCanvasGroupActive(_controlsCanvasGroup, true);
+        SetCanvasGroupActive(_creditsCanvasGroup, false);
+    }
+
     private void Credits()
     {
-        
+        SetCanvasGroupActive(_mainMenuCanvasGroup, false);
+        SetCanvasGroupActive(_controlsCanvasGroup, false);
+        SetCanvasGroupActive(_creditsCanvasGroup, true);
+    }
+
+    private void Back()
+    {
+        SetCanvasGroupActive(_mainMenuCanvasGroup, true);
+        SetCanvasGroupActive(_controlsCanvasGroup, false);
+        SetCanvasGroupActive(_creditsCanvasGroup, false);
     }
 }

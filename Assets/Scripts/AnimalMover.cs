@@ -81,7 +81,7 @@ public class AnimalMover : MonoBehaviour
         
         var nearestTrash = Trash.Trashes.OrderBy(trash => DistanceTo(trash.transform.position)).First();
         var distanceToNearestTrash = DistanceTo(nearestTrash.transform.position);
-        var runToTrashDistance = 5f;
+        var runToTrashDistance = 7f;
         
         if (distanceToNearestTrash > runToTrashDistance) yield break;
         

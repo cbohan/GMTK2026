@@ -53,6 +53,8 @@ public class TrashCan : MonoBehaviour
             
             var rayToTrashCan = new Ray(origin, trashCan._raycastTargetPosition - origin);
             var distanceToTrash = Vector3.Distance(origin, trashCan._raycastTargetPosition);
+            
+            if (distanceToTrash > 35) continue;
 
             if (Physics.Raycast(rayToTrashCan, out var hit, distanceToTrash)) continue;
 

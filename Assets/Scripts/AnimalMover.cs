@@ -50,7 +50,7 @@ public class AnimalMover : MonoBehaviour
                     targetPosition = hit.point;
                 }
                 transform.position = targetPosition;
-                reachedTarget = Vector3.Distance(transform.position, move.Position) < .1f;
+                reachedTarget = DistanceTo(move.Position) < .1f;
                 
                 runFrameTimer += Time.deltaTime;
                 var runFrame = Mathf.FloorToInt(runFrameTimer / _secondPerRunFrame) % _runFrames.Length;
@@ -79,8 +79,8 @@ public class AnimalMover : MonoBehaviour
     {
         if (Trash.Trashes == null || Trash.Trashes.Count == 0) yield break;
         
-        var nearestTrash = Trash.Trashes.OrderBy(trash => Vector3.Distance(trash.transform.position, transform.position)).First();
-        var distanceToNearestTrash = Vector3.Distance(transform.position, nearestTrash.transform.position);
+        var nearestTrash = Trash.Trashes.OrderBy(trash => DistanceTo(trash.transform.position)).First();
+        var distanceToNearestTrash = DistanceTo(nearestTrash.transform.position);
         var runToTrashDistance = 5f;
         
         if (distanceToNearestTrash > runToTrashDistance) yield break;
@@ -98,7 +98,7 @@ public class AnimalMover : MonoBehaviour
                 targetPosition = hit.point;
             }
             transform.position = targetPosition;
-            reachedTarget = Vector3.Distance(transform.position, nearestTrash.Position) < .5f;
+            reachedTarget = DistanceTo(nearestTrash.Position) < .5f;
                 
             runFrameTimer += Time.deltaTime;
             var runFrame = Mathf.FloorToInt(runFrameTimer / _secondPerRunFrame) % _runFrames.Length;
@@ -113,6 +113,10 @@ public class AnimalMover : MonoBehaviour
         
         yield return null;
     }
+
+    private float DistanceTo(Vector3 trashPosition) => Vector2.Distance(
+        new Vector2(transform.position.x, transform.position.z),
+        new Vector2(trashPosition.x, trashPosition.z));
 
     private bool IsMovingRight(Vector3 start, Vector3 end)
     {

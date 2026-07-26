@@ -1,4 +1,3 @@
-using System;
 using System.Collections;
 using TMPro;
 using UnityEngine;
@@ -8,6 +7,8 @@ using UnityEngine.UI;
 
 public class Hud : MonoBehaviour
 {
+    private const float FollowerDrainPerSecond = 15f;
+    
     public static Hud instance { get; private set; }
     
     [Header("Battery")]
@@ -22,7 +23,6 @@ public class Hud : MonoBehaviour
     [SerializeField] private TMP_Text _trashText;
 
     [Header("Followers")]
-    [SerializeField] private float _followerDrainPerSecond = 10f;
     [SerializeField] private TMP_Text _followerText;
     [SerializeField] private TMP_Text _followerEndText;
 
@@ -78,7 +78,7 @@ public class Hud : MonoBehaviour
         if (!EndOfLevel.instance.IsShown)
         {
             _batteryAmount -= Time.deltaTime;
-            FollowerTracker.Instance.followerCount -= _followerDrainPerSecond * Time.deltaTime;
+            FollowerTracker.Instance.followerCount -= FollowerDrainPerSecond * Time.deltaTime;
 
             if (_snapTextUptime > 0)
             {

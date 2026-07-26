@@ -9,8 +9,12 @@ public class EndMenu : MonoBehaviour
     [SerializeField] private TMP_Text _finalScore;
     
     private void Awake()
-    {
-        _finalScore.text = $"Congratulations! You ended with {(int)FollowerTracker.Instance.followerCount} followers!";
+    { 
+        var followerCount = (int)FollowerTracker.Instance.followerCount;
+
+        Cursor.lockState = CursorLockMode.None;
+        _finalScore.text = followerCount == 0 ? "Unfortunately, you just couldn't hack it as a photographer :(" : $"Congratulations! You ended with {followerCount} followers!";
+        
         _replayButton.onClick.AddListener(Replay);
     }
 

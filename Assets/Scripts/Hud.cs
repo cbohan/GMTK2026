@@ -3,6 +3,7 @@ using System.Collections;
 using TMPro;
 using UnityEngine;
 using UnityEngine.InputSystem;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class Hud : MonoBehaviour
@@ -21,7 +22,7 @@ public class Hud : MonoBehaviour
     [SerializeField] private TMP_Text _trashText;
 
     [Header("Followers")]
-    [SerializeField] private float _followerDrainPerFrame;
+    [SerializeField] private float _followerDrainPerSecond = 10f;
     [SerializeField] private TMP_Text _followerText;
     [SerializeField] private TMP_Text _followerEndText;
 
@@ -77,7 +78,7 @@ public class Hud : MonoBehaviour
         if (!EndOfLevel.instance.IsShown)
         {
             _batteryAmount -= Time.deltaTime;
-            FollowerTracker.Instance.followerCount -= _followerDrainPerFrame;
+            FollowerTracker.Instance.followerCount -= _followerDrainPerSecond * Time.deltaTime;
 
             if (_snapTextUptime > 0)
             {
@@ -94,6 +95,13 @@ public class Hud : MonoBehaviour
                 _followerEndText.text = $"{(int)FollowerTracker.Instance.followerCount} followers";
                 EndOfLevel.instance.Show(bestPhotoScore, _startingFollowerCount, FollowerTracker.Instance.followerCount);
                 Cursor.lockState = CursorLockMode.None;
+            }
+            
+            // When follower hits zero, go to the end menu
+            if (FollowerTracker.Instance.followerCount <= 0)
+            {
+                FollowerTracker.Instance.followerCount = 0;
+                SceneManager.LoadScene("EndingScene");
             }
         }
     }

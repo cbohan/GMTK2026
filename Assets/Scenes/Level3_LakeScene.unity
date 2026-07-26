@@ -3869,7 +3869,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b961a42aeed80c94baaccacf69510cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FollowerTracker
-  followerCount: 0
+  followerCount: 1000
 --- !u!4 &2128003333
 Transform:
   m_ObjectHideFlags: 0

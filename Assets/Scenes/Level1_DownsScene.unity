@@ -223,7 +223,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -5.4181795
+      value: -55.53
       objectReference: {fileID: 0}
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -231,7 +231,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -24.116962
+      value: -14.64
       objectReference: {fileID: 0}
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -263,7 +263,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148199902555480746, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_Name
-      value: AnimalMove (7)
+      value: AnimalMove 3.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -372,7 +372,7 @@ GameObject:
   - component: {fileID: 157202642}
   - component: {fileID: 157202641}
   m_Layer: 0
-  m_Name: JimothyTrigger
+  m_Name: Trigger - 1
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -459,7 +459,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148199902555480746, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_Name
-      value: AnimalMove (2)
+      value: AnimalMove - 1.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -556,7 +556,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -10.024324
+      value: -36.45
       objectReference: {fileID: 0}
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -564,7 +564,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -30.096615
+      value: -29.56
       objectReference: {fileID: 0}
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -596,7 +596,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148199902555480746, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_Name
-      value: AnimalMove (9)
+      value: AnimalMove 4.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -624,7 +624,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -16.80476
+      value: -44.73
       objectReference: {fileID: 0}
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -632,7 +632,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -29.60526
+      value: -31.64
       objectReference: {fileID: 0}
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -664,7 +664,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148199902555480746, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_Name
-      value: AnimalMove (6)
+      value: AnimalMove 3.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1164,7 +1164,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2680747299631313206, guid: 001538fcda7b04545b6885a51438b75e, type: 3}
       propertyPath: m_Name
-      value: FAKERandy (1)
+      value: FAKERandy - 2
       objectReference: {fileID: 0}
     - target: {fileID: 6292710822160088570, guid: 001538fcda7b04545b6885a51438b75e, type: 3}
       propertyPath: _triggerVolume
@@ -1184,7 +1184,7 @@ PrefabInstance:
       objectReference: {fileID: 565874821}
     - target: {fileID: 8603108233495065523, guid: 001538fcda7b04545b6885a51438b75e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -17.982111
+      value: -41.8
       objectReference: {fileID: 0}
     - target: {fileID: 8603108233495065523, guid: 001538fcda7b04545b6885a51438b75e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1192,7 +1192,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8603108233495065523, guid: 001538fcda7b04545b6885a51438b75e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -2.5906384
+      value: -17.4
       objectReference: {fileID: 0}
     - target: {fileID: 8603108233495065523, guid: 001538fcda7b04545b6885a51438b75e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1619,7 +1619,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b961a42aeed80c94baaccacf69510cf2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: Assembly-CSharp::FollowerTracker
-  followerCount: 0
+  followerCount: 1000
 --- !u!4 &537426674
 Transform:
   m_ObjectHideFlags: 0
@@ -1650,7 +1650,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 14.127054
+      value: -39.23
       objectReference: {fileID: 0}
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -1658,7 +1658,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -20.427404
+      value: -56.35
       objectReference: {fileID: 0}
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -1690,7 +1690,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148199902555480746, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_Name
-      value: AnimalMove (11)
+      value: AnimalMove 4.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -1989,7 +1989,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148199902555480746, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_Name
-      value: AnimalMove (4)
+      value: AnimalMove 2.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2007,7 +2007,7 @@ GameObject:
   - component: {fileID: 906110987}
   - component: {fileID: 906110986}
   m_Layer: 0
-  m_Name: SecondTrigger
+  m_Name: Trigger - 2
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -2038,7 +2038,7 @@ Transform:
   m_GameObject: {fileID: 906110985}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -27.78, y: 0.95, z: -24.55}
+  m_LocalPosition: {x: -68.28, y: 0.42, z: -27.28}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
@@ -2210,7 +2210,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -46.906094
+      value: -44.8
       objectReference: {fileID: 0}
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2218,7 +2218,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 39.123604
+      value: 23.83
       objectReference: {fileID: 0}
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -2250,7 +2250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148199902555480746, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_Name
-      value: AnimalMove
+      value: AnimalMove - 1.1
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2312,7 +2312,15 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148199902555480746, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_Name
-      value: AnimalMove (3)
+      value: AnimalMove 2.1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942795444194819392, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
+      propertyPath: MoveSpeed
+      value: 4
+      objectReference: {fileID: 0}
+    - target: {fileID: 7942795444194819392, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
+      propertyPath: WaitDuration
+      value: 0.5
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -2686,7 +2694,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2680747299631313206, guid: 484d51d56fe7837418612fd960d4de20, type: 3}
       propertyPath: m_Name
-      value: Jimothy (1)
+      value: Jimothy - 2
       objectReference: {fileID: 0}
     - target: {fileID: 6292710822160088570, guid: 484d51d56fe7837418612fd960d4de20, type: 3}
       propertyPath: _triggerVolume
@@ -2706,7 +2714,7 @@ PrefabInstance:
       objectReference: {fileID: 1936826034}
     - target: {fileID: 8603108233495065523, guid: 484d51d56fe7837418612fd960d4de20, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -19.247675
+      value: -50.37
       objectReference: {fileID: 0}
     - target: {fileID: 8603108233495065523, guid: 484d51d56fe7837418612fd960d4de20, type: 3}
       propertyPath: m_LocalPosition.y
@@ -2714,7 +2722,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8603108233495065523, guid: 484d51d56fe7837418612fd960d4de20, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -47.529133
+      value: -48.46
       objectReference: {fileID: 0}
     - target: {fileID: 8603108233495065523, guid: 484d51d56fe7837418612fd960d4de20, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3214,7 +3222,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2680747299631313206, guid: 001538fcda7b04545b6885a51438b75e, type: 3}
       propertyPath: m_Name
-      value: FAKERandy
+      value: FAKERandy - 1
       objectReference: {fileID: 0}
     - target: {fileID: 6292710822160088570, guid: 001538fcda7b04545b6885a51438b75e, type: 3}
       propertyPath: _triggerVolume
@@ -3234,7 +3242,7 @@ PrefabInstance:
       objectReference: {fileID: 1081533757}
     - target: {fileID: 8603108233495065523, guid: 001538fcda7b04545b6885a51438b75e, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -18.109327
+      value: -25.89
       objectReference: {fileID: 0}
     - target: {fileID: 8603108233495065523, guid: 001538fcda7b04545b6885a51438b75e, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3242,7 +3250,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 8603108233495065523, guid: 001538fcda7b04545b6885a51438b75e, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 47.88
+      value: 36.59
       objectReference: {fileID: 0}
     - target: {fileID: 8603108233495065523, guid: 001538fcda7b04545b6885a51438b75e, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3323,7 +3331,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -40.8753
+      value: -45.71
       objectReference: {fileID: 0}
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3331,7 +3339,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 47.1914
+      value: 48.13
       objectReference: {fileID: 0}
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3363,7 +3371,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148199902555480746, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_Name
-      value: AnimalMove (1)
+      value: AnimalMove - 1.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3380,7 +3388,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: -7.7437925
+      value: -19.5
       objectReference: {fileID: 0}
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3388,7 +3396,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -3.956946
+      value: -41.2
       objectReference: {fileID: 0}
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3420,7 +3428,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148199902555480746, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_Name
-      value: AnimalMove (10)
+      value: AnimalMove 4.2
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3696,7 +3704,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 1.634716
+      value: -54.79
       objectReference: {fileID: 0}
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalPosition.y
@@ -3704,7 +3712,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalPosition.z
-      value: -41.160725
+      value: -4.84
       objectReference: {fileID: 0}
     - target: {fileID: 1223084965464196290, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_LocalRotation.w
@@ -3736,7 +3744,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148199902555480746, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_Name
-      value: AnimalMove (8)
+      value: AnimalMove 3.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -3861,7 +3869,7 @@ PrefabInstance:
       objectReference: {fileID: 0}
     - target: {fileID: 3148199902555480746, guid: 9c5fc326ce152b94bab4508674aa7f1f, type: 3}
       propertyPath: m_Name
-      value: AnimalMove (5)
+      value: AnimalMove 2.3
       objectReference: {fileID: 0}
     m_RemovedComponents: []
     m_RemovedGameObjects: []
@@ -4102,7 +4110,7 @@ PrefabInstance:
     m_Modifications:
     - target: {fileID: 2680747299631313206, guid: 484d51d56fe7837418612fd960d4de20, type: 3}
       propertyPath: m_Name
-      value: Jimothy
+      value: Jimothy - 1
       objectReference: {fileID: 0}
     - target: {fileID: 6292710822160088570, guid: 484d51d56fe7837418612fd960d4de20, type: 3}
       propertyPath: _triggerVolume

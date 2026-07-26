@@ -33,7 +33,7 @@ public class Hud : MonoBehaviour
     private int bestPhotoScore = 0;
     private float _startingFollowerCount;
     private int _snapTextUptime;
-    private void Awake()
+    private void Start()
     {
         instance = this;
         _startingFollowerCount = FollowerTracker.Instance.followerCount;

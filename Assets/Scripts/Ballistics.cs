@@ -3,7 +3,7 @@ using UnityEngine;
 public static class Ballistics
 {
     private const float Gravity = 9.81f;
-    private const float ThrowSpeed = 10f;
+    private const float ThrowSpeed = 15f;
     private const float ThrowSpeedSquared = ThrowSpeed * ThrowSpeed;
 
     public static float Solve(Vector3 start, Vector3 target)

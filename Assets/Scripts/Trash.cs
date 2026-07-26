@@ -52,6 +52,8 @@ public class Trash : MonoBehaviour
         
         yield return new WaitForSeconds(1.5f);
         
+        if (!gameObject) yield break; 
+        
         Destroy(gameObject);
         Trashes.Remove(this);
     }

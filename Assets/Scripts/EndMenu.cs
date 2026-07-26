@@ -10,7 +10,7 @@ public class EndMenu : MonoBehaviour
     
     private void Awake()
     {
-        _finalScore.text = $"Congratulations! You ended with {FollowerTracker.Instance.followerCount} followers!";
+        _finalScore.text = $"Congratulations! You ended with {(int)FollowerTracker.Instance.followerCount} followers!";
         _replayButton.onClick.AddListener(Replay);
     }
 
